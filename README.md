@@ -2,6 +2,11 @@
 
 Reusable Code for the different flavors of .NET
 
+## NuGet Packages
+
+- [Bwa.Core](https://www.nuget.org/packages/Bwa.Core)
+- [Bwa.Core.TestUtilities](https://www.nuget.org/packages/Bwa.Core.TestUtilities)
+
 ## Publishing Libraries
 
     nuget SetApiKey YOUR_API_KEY
