@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bwa.Core.TestUtilities", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bwa.Core.Test", "Standard_2.0\Bwa.Core.Test\Bwa.Core.Test.csproj", "{547AECF1-1108-491F-AB1C-D48FF78BE0FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bwa.Core.Data", "Standard_2.0\Bwa.Core.Data\Bwa.Core.Data.csproj", "{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{547AECF1-1108-491F-AB1C-D48FF78BE0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{547AECF1-1108-491F-AB1C-D48FF78BE0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{547AECF1-1108-491F-AB1C-D48FF78BE0FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{9CD02F82-C8AE-4BB3-A825-62605B4E7D47} = {11D36888-BF52-43EB-8B35-A9214900AC32}
 		{9BD98797-028C-4196-8382-376B46DE11D8} = {11D36888-BF52-43EB-8B35-A9214900AC32}
 		{547AECF1-1108-491F-AB1C-D48FF78BE0FB} = {11D36888-BF52-43EB-8B35-A9214900AC32}
+		{4D37FBDC-603B-42B5-B4C0-C21B850DE5FF} = {11D36888-BF52-43EB-8B35-A9214900AC32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {08902316-CE7E-40F1-B36A-C5522C063249}
