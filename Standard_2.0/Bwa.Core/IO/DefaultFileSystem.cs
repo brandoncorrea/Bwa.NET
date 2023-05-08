@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using Bwa.Core.Extensions;
 
 namespace Bwa.Core.IO
 {
@@ -28,5 +31,11 @@ namespace Bwa.Core.IO
         public IEnumerable<IFileInfo> GetFileInfos(string directory) =>
             new DefaultDirectoryInfo(directory).GetFiles();
         public string GetFileVersion(string path) => FileVersionInfo.GetVersionInfo(path).FileVersion;
+        public string[] Tail(IFileInfo file, int count) => Tail(file.FullName, count);
+        public string[] Tail(string path, int count)
+        {
+            using (var file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                return file.Tail(count);
+        }
     }
 }

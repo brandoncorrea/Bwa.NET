@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bwa.Core.TestUtilities" Version="1.0.3" />
+    <PackageReference Include="Bwa.Core.TestUtilities" Version="1.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Bwa.Core\Bwa.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Bwa.Core
+namespace Bwa.Core.Extensions
 {
-    public static class Extensions
+    public static class DateTimeExtensions
     {
         public static DateTime Last(this DateTime date, DayOfWeek day)
         {

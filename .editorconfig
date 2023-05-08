@@ -75,3 +75,8 @@ dotnet_naming_style.pascal_case.required_prefix =
 dotnet_naming_style.pascal_case.required_suffix = 
 dotnet_naming_style.pascal_case.word_separator = 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+[Standard_2.0/Bwa.Core.Test/**]
+# CS8625: Cannot convert null literal to non-nullable reference type.
+dotnet_diagnostic.CS8625.severity = none
+dotnet_diagnostic.CS8618.severity = none

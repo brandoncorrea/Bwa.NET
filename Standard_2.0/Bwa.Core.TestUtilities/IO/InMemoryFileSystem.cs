@@ -39,5 +39,16 @@ namespace Bwa.Core.TestUtilities.IO
             FileExists(path)
             ? "1.2.3"
             : throw new FileNotFoundException();
+
+        public string[] Tail(IFileInfo file, int lines)
+        {
+            if (file == null || !file.Exists)
+                throw new FileNotFoundException();
+            var content = file.ReadAllLines();
+            return content.Skip(content.Length - lines).ToArray();
+        }
+
+        public string[] Tail(string path, int lines) =>
+            Tail(Files.FirstOrDefault(i => i.FullName == path), lines);
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace Bwa.Core.Test;
+﻿using Bwa.Core.Extensions;
+
+namespace Bwa.Core.Test.Extensions;
 
 [TestFixture]
-public class ExtensionsTest
+public class DateTimeExtensionsTest
 {
     [Test]
     public void DateForLastDayOfWeek()

@@ -15,5 +15,7 @@ namespace Bwa.Core.IO
         IEnumerable<FileInfo> GetFileInfos(DirectoryInfo directory, string pattern);
         IEnumerable<IFileInfo> GetFileInfos(IDirectoryInfo directory, string pattern);
         string GetFileVersion(string path);
+        string[] Tail(IFileInfo file, int lines);
+        string[] Tail(string path, int lines);
     }
 }

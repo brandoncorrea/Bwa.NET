@@ -18,10 +18,10 @@ namespace Bwa.Core.TestUtilities.IO
         public string FullName { get; set; }
         public string Name { get; set; }
         public string Extension { get; set; }
-        public bool Exists { get; set; }
+        public bool Exists { get; set; } = true;
         public bool IsReadOnly { get; set; }
         public long Length { get; set; }
-        public string Contents { get; set; }
+        public string Contents { get; set; } = "";
         public string[] ReadAllLines() => Contents?.Split('\r', '\n') ?? Array.Empty<string>();
     }
 }

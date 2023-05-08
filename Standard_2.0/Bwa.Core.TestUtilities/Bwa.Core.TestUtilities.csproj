@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bwa.Core" Version="1.0.8" />
+    <PackageReference Include="Bwa.Core" Version="1.0.9" />
     <PackageReference Include="Bwa.Core.Data" Version="1.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
