@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using Bwa.Core.Extensions;
 
 namespace Bwa.Core.Data
 {
@@ -23,7 +24,7 @@ namespace Bwa.Core.Data
             GetDataRows(connectionString, query, new SqlParameter[] { sqlParam });
 
         public IEnumerable<Dictionary<string, object>> GetDataRows(string connectionString, string query, IEnumerable<SqlParameter> sqlParameters) =>
-            ExecuteSql(connectionString, query, sqlParameters);
+            ExecuteSql(connectionString, query, sqlParameters).Select(RowToDictionary);
 
         public IEnumerable<Dictionary<string, object>> GetDataRows(string query) =>
             GetDataRows(GetConnectionString(), query);
@@ -32,8 +33,34 @@ namespace Bwa.Core.Data
             GetDataRows(GetConnectionString(), query, sqlParam);
 
         public IEnumerable<Dictionary<string, object>> GetDataRows(string query, IEnumerable<SqlParameter> sqlParameters) =>
-            ExecuteSql(GetConnectionString(), query, sqlParameters);
+            ExecuteSql(GetConnectionString(), query, sqlParameters).Select(RowToDictionary);
 
+        private Dictionary<string, object> RowToDictionary(DataRow row)
+        {
+            var obj = new Dictionary<string, object>();
+            foreach (DataColumn column in row.Table.Columns)
+                obj.Add(column.ColumnName, row[column]);
+            return obj;
+        }
+
+        public IEnumerable<T> GetDataRows<T>(string query) =>
+            GetDataRows<T>(GetConnectionString(), query);
+
+        public IEnumerable<T> GetDataRows<T>(string query, SqlParameter sqlParam) =>
+            GetDataRows<T>(GetConnectionString(), query, new[] { sqlParam });
+
+        public IEnumerable<T> GetDataRows<T>(string query, IEnumerable<SqlParameter> sqlParameters) =>
+            GetDataRows<T>(GetConnectionString(), query, sqlParameters);
+
+        public IEnumerable<T> GetDataRows<T>(string connectionString, string query) =>
+            GetDataRows<T>(connectionString, query, Array.Empty<SqlParameter>());
+
+        public IEnumerable<T> GetDataRows<T>(string connectionString, string query, SqlParameter sqlParam) =>
+            GetDataRows<T>(connectionString, query, new[] { sqlParam });
+
+        public IEnumerable<T> GetDataRows<T>(string connectionString, string query, IEnumerable<SqlParameter> sqlParameters) =>
+            ExecuteSql(connectionString, query, sqlParameters).Select(row => row.Deserialize<T>());
+            
         private string GetConnectionString()
         {
             if (!string.IsNullOrWhiteSpace(ConnectionString))
@@ -55,7 +82,7 @@ namespace Bwa.Core.Data
             return connectionString;
         }
 
-        private IEnumerable<Dictionary<string, object>> ExecuteSql(string connectionString, string query, IEnumerable<SqlParameter> sqlParameters)
+        private DataRow[] ExecuteSql(string connectionString, string query, IEnumerable<SqlParameter> sqlParameters)
         {
             var connection = new SqlConnection(connectionString);
             var command = new SqlCommand(query, connection)
@@ -70,15 +97,7 @@ namespace Bwa.Core.Data
             da.Fill(dataTable);
             connection.Close();
             da.Dispose();
-            return dataTable.Select().Select(RowToDictionary);
-        }
-
-        private Dictionary<string, object> RowToDictionary(DataRow row)
-        {
-            var obj = new Dictionary<string, object>();
-            foreach (DataColumn column in row.Table.Columns)
-                obj.Add(column.ColumnName, row[column]);
-            return obj;
+            return dataTable.Select();
         }
     }
 }

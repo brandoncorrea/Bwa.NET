@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bwa.Core.Extensions;
+using Bwa.Core.Test.Models;
 
 namespace Bwa.Core.Test.Extensions;
 
@@ -116,20 +117,4 @@ public class DictionaryExtensionsTest
         Assert.AreEqual(34, book.Author.Age);
         Assert.AreEqual("The book", book.Title);
     }
-}
-
-public class Book
-{
-    public Author Author { get; set; }
-    public string Title { get; set; }
-}
-
-public class Author
-{
-    public char FirstInitial { get; set; }
-    public string LastName { get; set; }
-    public int Age { get; set; }
-    public double NetWorth { get; set; }
-    public bool IsPublished { get; set; }
-    public DateTime DateOfBirth { get; set; }
 }
